@@ -27,6 +27,24 @@
         .custom-shadow {
             box-shadow: 0 4px 6px -1px rgba(0, 104, 55, 0.1), 0 2px 4px -1px rgba(0, 104, 55, 0.06);
         }
+        #mobile-nav {
+            font-size: 16px;
+            height: 48px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000000'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            padding-right: 30px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        #mobile-nav:focus {
+            outline: none;
+            border-color: #006837;
+            box-shadow: 0 0 0 2px rgba(0, 104, 55, 0.2);
+        }
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -92,8 +110,37 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Navigation Sidebar -->
-            <nav class="md:col-span-1 space-y-2 md:sticky md:top-4 mobile-nav">
+            <!-- Agregar justo antes del nav actual -->
+            <div class="md:hidden mb-4">
+                <select id="mobile-nav" class="w-full p-2 border rounded-lg bg-white">
+                    <option value="">Seleccione una sección...</option>
+                    <option value="alcance">Alcance</option>
+                    <option value="marco">Aplicación y Marco Regulatorio</option>
+                    <option value="obligatoriedad">Obligatoriedad</option>
+                    <option value="definiciones">Definiciones</option>
+                    <option value="principios">Principios Específicos</option>
+                    <option value="finalidades">Finalidades y Tratamiento</option>
+                    <option value="autorizacion">Autorización</option>
+                    <option value="derechos">Deberes del GECC</option>
+                    <option value="deberes">Deberes como encargado</option>
+                    <option value="suministro">Suministro de Datos</option>
+                    <option value="garantias">Garantías</option>
+                    <option value="derechos-titulares">Derechos Titulares</option>
+                    <option value="legitimacion">Legitimación</option>
+                    <option value="procedimiento">Procedimiento</option>
+                    <option value="supresion">Supresión</option>
+                    <option value="limitaciones">Limitaciones</option>
+                    <option value="revocatoria">Revocatoria</option>
+                    <option value="canales">Canales</option>
+                    <option value="seguridad">Seguridad</option>
+                    <option value="utilizacion">Utilización Internacional</option>
+                    <option value="oficial">Oficial de Protección</option>
+                    <option value="registro">Registro Nacional</option>
+                    <option value="periodo">Período de Vigencia</option>
+                    <option value="vigencia">Vigencia de la Política</option>
+                </select>
+            </div>
+            <nav class="hidden md:block md:col-span-1 space-y-2 md:sticky md:top-4">
                 <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 active" data-section="alcance">
                     Alcance
                 </button>
@@ -956,7 +1003,6 @@ autonomía y capacidad para entender el asunto.</p>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Grupo Coomeva</h3>
                     <p>Política de Protección de Datos Personales</p>
-                    <p class="mt-2">Versión: Febrero 2024</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Matriz</h3>
@@ -980,25 +1026,39 @@ autonomía y capacidad para entender el asunto.</p>
 
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    // Remove active class from all items
                     navItems.forEach(nav => nav.classList.remove('active'));
                     sections.forEach(section => section.classList.remove('active'));
                     
-                    // Add active class to clicked item
                     this.classList.add('active');
                     
-                    // Show corresponding section
                     const sectionId = this.dataset.section;
                     const targetSection = document.getElementById(sectionId);
                     if(targetSection) {
                         targetSection.classList.add('active');
                     }
-                    
-                    // For debugging
-                    console.log('Clicked section:', sectionId);
-                    console.log('Target section found:', !!targetSection);
+
                 });
             });
+
+                const mobileNav = document.getElementById('mobile-nav');
+                if(mobileNav) {
+                    mobileNav.addEventListener('change', function() {
+                        const sectionId = this.value;
+                        if(sectionId) {
+                            // Ocultar todas las secciones
+                            sections.forEach(section => section.classList.remove('active'));
+                            
+                            // Mostrar la sección seleccionada
+                            const targetSection = document.getElementById(sectionId);
+                            if(targetSection) {
+                                targetSection.classList.add('active');
+                                
+                                // Scroll suave hacia la sección
+                                targetSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    });
+                }
         });
     </script>
 </body>
