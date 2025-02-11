@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Protección de Datos - GECC</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .section-content {
+            display: none;
+        }
+        .section-content.active {
+            display: block;
+        }
+        .nav-item.active {
+            background-color: #006837;
+            color: white;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 104, 55, 0.1), 0 2px 4px -1px rgba(0, 104, 55, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <img src="/api/placeholder/200/60" alt="Logo Grupo Coomeva" class="h-12">
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#contacto" class="text-gray-600 hover:text-green-700">Contacto</a>
+                    <a href="#derechos" class="text-gray-600 hover:text-green-700">Derechos</a>
+                    <a href="#oficinas" class="text-gray-600 hover:text-green-700">Oficinas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-green-700 text-white py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Política de Protección de Datos Personales</h1>
+            <p class="text-xl mb-8">Grupo Empresarial Cooperativo Coomeva</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Navigation Sidebar -->
+            <nav class="md:col-span-1 space-y-2">
+                <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 hover:bg-green-700 hover:text-white active" data-section="alcance">
+                    Alcance
+                </button>
+                <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 hover:bg-green-700 hover:text-white" data-section="definiciones">
+                    Definiciones
+                </button>
+                <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 hover:bg-green-700 hover:text-white" data-section="principios">
+                    Principios
+                </button>
+                <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 hover:bg-green-700 hover:text-white" data-section="derechos">
+                    Derechos
+                </button>
+                <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 hover:bg-green-700 hover:text-white" data-section="contacto">
+                    Canales de Contacto
+                </button>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <div id="alcance" class="section-content active">
+                    <h2 class="text-2xl font-bold mb-4">Alcance</h2>
+                    <p class="mb-4">La presente Política se aplicará a todas las bases de datos y/o archivos que contengan datos personales que sean objeto de tratamiento por parte del GECC, incluida toda aquella información que haya sido obtenida o recolectada con anterioridad a la Ley 1581 de 2012 y cualquier otro dato que sea susceptible de ser tratado por las empresas del GECC.</p>
+                </div>
+
+                <div id="definiciones" class="section-content">
+                    <h2 class="text-2xl font-bold mb-4">Definiciones Clave</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-50 rounded">
+                            <h3 class="font-bold">Autorización</h3>
+                            <p>Consentimiento previo, expreso e informado del titular del dato personal para llevar a cabo el tratamiento.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded">
+                            <h3 class="font-bold">Dato Personal</h3>
+                            <p>Cualquier información que permita identificar a una persona natural.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="principios" class="section-content">
+                    <h2 class="text-2xl font-bold mb-4">Principios Específicos</h2>
+                    <ul class="list-disc pl-6 space-y-3">
+                        <li>Principio de legalidad</li>
+                        <li>Principio de finalidad</li>
+                        <li>Principio de libertad</li>
+                        <li>Principio de veracidad o calidad</li>
+                        <li>Principio de transparencia</li>
+                        <li>Principio de acceso y circulación restringida</li>
+                    </ul>
+                </div>
+
+                <div id="derechos" class="section-content">
+                    <h2 class="text-2xl font-bold mb-4">Derechos de los Titulares</h2>
+                    <div class="space-y-4">
+                        <p>Como titular de sus datos personales, usted tiene derecho a:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>Conocer, actualizar y rectificar sus datos personales</li>
+                            <li>Solicitar prueba de la autorización otorgada</li>
+                            <li>Ser informado sobre el uso de sus datos personales</li>
+                            <li>Presentar quejas ante la Superintendencia de Industria y Comercio</li>
+                            <li>Revocar la autorización y/o solicitar la supresión del dato</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="contacto" class="section-content">
+                    <h2 class="text-2xl font-bold mb-4">Canales de Contacto</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-gray-50 rounded">
+                            <h3 class="font-bold mb-2">Líneas de Atención</h3>
+                            <ul class="space-y-2">
+                                <li>Cali: 602 333 0000</li>
+                                <li>Medellín: 604 415 7700</li>
+                                <li>Bogotá: 601 748 1515</li>
+                                <li>Barranquilla: 605 361 9800</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded">
+                            <h3 class="font-bold mb-2">Otros Canales</h3>
+                            <p>Portal web: www.coomeva.com.co</p>
+                            <p>Opción: Contáctenos</p>
+                            <p>Línea nacional: 01 8000 950 123</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Grupo Coomeva</h3>
+                    <p>Política de Protección de Datos Personales</p>
+                    <p>Versión: Febrero 2024</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Enlaces Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-green-500">Inicio</a></li>
+                        <li><a href="#" class="hover:text-green-500">Contacto</a></li>
+                        <li><a href="#" class="hover:text-green-500">Oficinas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contacto</h3>
+                    <p>Línea Nacional: 01 8000 950 123</p>
+                    <p>Desde móvil: #464</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.section-content');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all nav items and sections
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+
+                    // Add active class to clicked nav item
+                    this.classList.add('active');
+
+                    // Show corresponding section
+                    const sectionId = this.dataset.section;
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
