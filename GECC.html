@@ -27,16 +27,53 @@
         .custom-shadow {
             box-shadow: 0 4px 6px -1px rgba(0, 104, 55, 0.1), 0 2px 4px -1px rgba(0, 104, 55, 0.06);
         }
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+            .nav-item {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            .space-y-4 > * + * {
+                margin-top: 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                font-size: 13px;
+            }
+            .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            h2 {
+                font-size: 1.25rem !important;
+            }
+            p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+            .nav-item {
+                padding: 0.5rem 0.75rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-        <header class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex items-center justify-between">
-                <img src="https://www.coomeva.com.co/info/coomeva/media/galeria/thumbs/thgaleria_220X220_206091.webp" alt="Logo Grupo Coomeva" class="h-12">
-            </div>
-        </div>
-    </header>
+    <!-- Hero Section -->
     <section class="bg-green-700 text-white py-16">
         <div class="container mx-auto px-4">
             <h1 class="text-4xl md:text-5xl font-bold mb-6">Política de Protección de Datos Personales</h1>
@@ -48,7 +85,7 @@
     <main class="container mx-auto px-4 py-12">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- Navigation Sidebar -->
-            <nav class="md:col-span-1 space-y-2 sticky top-4">
+            <nav class="md:col-span-1 space-y-2 md:sticky md:top-4 mobile-nav">
                 <button class="nav-item w-full text-left px-4 py-2 rounded transition-colors duration-200 active" data-section="alcance">
                     Alcance
                 </button>
@@ -91,7 +128,7 @@
             </nav>
 
             <!-- Content Area -->
-            <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-6">
+            <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-3 md:p-6">
                 <div id="alcance" class="section-content active">
                     <h2 class="text-2xl font-bold mb-4">1. Alcance</h2>
                     <p class="mb-4">La presente Política se aplicará a todas las bases de datos y/o archivos que contengan datos personales que sean objeto de tratamiento por parte del GECC, incluida toda aquella información que haya sido obtenida o recolectada con anterioridad a la Ley 1581 de 2012 y cualquier otro dato que sea susceptible de ser tratado por las empresas del GECC en desarrollo de su objeto social o con ocasión de cualquier tipo de relación civil, laboral o comercial que llegue a surgir en virtud de sus actividades conexas o propias de su naturaleza societaria.</p>
@@ -173,6 +210,8 @@
                                         </div>
                                     </div>
 
+
+
                 <div id="contacto" class="section-content">
                     <h2 class="text-2xl font-bold mb-4">Canales de Contacto</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -209,6 +248,7 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Grupo Coomeva</h3>
                     <p>Política de Protección de Datos Personales</p>
+                    <p class="mt-2">Versión: Febrero 2024</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-bold mb-4">Matriz</h3>
@@ -232,13 +272,23 @@
 
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
+                    // Remove active class from all items
                     navItems.forEach(nav => nav.classList.remove('active'));
                     sections.forEach(section => section.classList.remove('active'));
                     
+                    // Add active class to clicked item
                     this.classList.add('active');
                     
+                    // Show corresponding section
                     const sectionId = this.dataset.section;
-                    document.getElementById(sectionId).classList.add('active');
+                    const targetSection = document.getElementById(sectionId);
+                    if(targetSection) {
+                        targetSection.classList.add('active');
+                    }
+                    
+                    // For debugging
+                    console.log('Clicked section:', sectionId);
+                    console.log('Target section found:', !!targetSection);
                 });
             });
         });
