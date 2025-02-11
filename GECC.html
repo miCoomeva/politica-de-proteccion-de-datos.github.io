@@ -16,13 +16,41 @@
         .section-content.active {
             display: block;
         }
+        .nav-item {
+            font-size: 0.9rem;
+            line-height: 1.2;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .nav-item:hover {
+            background-color: #f3f4f6;
+            border-color: #e5e7eb;
+        }
+        
         .nav-item.active {
             background-color: #006837;
             color: white;
+            font-weight: 500;
         }
-        .nav-item:hover {
+        nav.md\:sticky {
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #006837 #f3f4f6;
+        }
+        nav.md\:sticky::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        nav.md\:sticky::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+        
+        nav.md\:sticky::-webkit-scrollbar-thumb {
             background-color: #006837;
-            color: white;
+            border-radius: 3px;
         }
         .custom-shadow {
             box-shadow: 0 4px 6px -1px rgba(0, 104, 55, 0.1), 0 2px 4px -1px rgba(0, 104, 55, 0.06);
@@ -44,6 +72,29 @@
             outline: none;
             border-color: #006837;
             box-shadow: 0 0 0 2px rgba(0, 104, 55, 0.2);
+        }
+
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .section-content h2 {
+            border-bottom: 2px solid #006837;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Para secciones con poco contenido */
+        .section-content.short-content {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-content.short-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
         @media (max-width: 768px) {
             body {
@@ -109,7 +160,7 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
             <!-- Agregar justo antes del nav actual -->
             <div class="md:hidden mb-4">
                 <select id="mobile-nav" class="w-full p-2 border rounded-lg bg-white">
@@ -216,7 +267,7 @@
             </nav>
 
             <!-- Content Area -->
-            <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-3 md:p-6">
+            <div class="md:col-span-4 bg-white rounded-lg shadow-lg p-3 md:p-6 min-h-[500px]">
                 <div id="alcance" class="section-content active">
                     <h2 class="text-2xl font-bold mb-4">1. Alcance</h2>
                     <p class="mb-4">La presente Política se aplicará a todas las bases de datos y/o archivos que contengan datos personales que sean objeto de tratamiento por parte del GECC, incluida toda aquella información que haya sido obtenida o recolectada con anterioridad a la Ley 1581 de 2012 y cualquier otro dato que sea susceptible de ser tratado por las empresas del GECC en desarrollo de su objeto social o con ocasión de cualquier tipo de relación civil, laboral o comercial que llegue a surgir en virtud de sus actividades conexas o propias de su naturaleza societaria.</p>
@@ -1024,6 +1075,24 @@ autonomía y capacidad para entender el asunto.</p>
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.section-content');
 
+            sections.forEach(section => {
+                if(section.offsetHeight < 400) {
+                    section.classList.add('short-content');
+                }
+            });
+        
+            // Ajustar posición de scroll al cambiar de sección
+            function adjustScrollPosition(targetSection) {
+                const header = document.querySelector('header');
+                const headerHeight = header ? header.offsetHeight : 0;
+                const offset = 20; // Espacio adicional
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - headerHeight - offset,
+                    behavior: 'smooth'
+                });
+            }
+
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
                     navItems.forEach(nav => nav.classList.remove('active'));
@@ -1032,13 +1101,15 @@ autonomía y capacidad para entender el asunto.</p>
                     this.classList.add('active');
                     
                     const sectionId = this.dataset.section;
-                    const targetSection = document.getElementById(sectionId);
+                    const targetSection = document.getElementById(this.dataset.section);
                     if(targetSection) {
-                        targetSection.classList.add('active');
+                        adjustScrollPosition(targetSection);
                     }
 
                 });
             });
+
+
 
                 const mobileNav = document.getElementById('mobile-nav');
                 if(mobileNav) {
